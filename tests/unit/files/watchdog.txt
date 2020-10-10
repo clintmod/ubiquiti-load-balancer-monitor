@@ -1,0 +1,45 @@
+Group G
+  eth0
+  status: OK
+  pings: 61480
+  fails: 336
+  run fails: 0/3
+  route drops: 9
+  ping gateway: 1.1.1.1 - REACHABLE
+  last route drop   : Sun Oct 11 06:15:04 2020
+  last route recover: Sun Oct 11 06:17:06 2020
+
+
+  eth1
+  status: OK
+  pings: 60076
+  fails: 10933
+  run fails: 0/3
+  route drops: 56
+  ping gateway: 1.1.1.1 - REACHABLE
+  last route drop   : Sun Oct 11 06:45:03 2020
+  last route recover: Sun Oct 11 06:47:47 2020
+
+
+  eth2
+  status: OK
+  pings: 61636
+  fails: 290
+  run fails: 0/3
+  route drops: 6
+  ping gateway: 1.1.1.1 - REACHABLE
+  last route drop   : Sun Oct 11 06:30:04 2020
+  last route recover: Sun Oct 11 06:32:08 2020
+
+
+  eth3
+  status: OK
+  pings: 62257
+  fails: 197
+  run fails: 0/3
+  route drops: 4
+  ping gateway: 1.1.1.1 - REACHABLE
+  last route drop   : Sun Oct 11 06:00:12 2020
+  last route recover: Sun Oct 11 06:02:06 2020
+
+

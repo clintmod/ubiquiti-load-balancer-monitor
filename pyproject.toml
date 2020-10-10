@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "ubiquiti-monitor"
+version = "0.1.0"
+description = "App for monitoring and rebooting a Ubiquiti er-x router with kasa power strips"
+authors = ["Clint M"]
+license = "MIT"
+repository = "https://github.com/clintmod/ubiquiti-load-balancer-monitor"
+readme = "README.md"
+packages = [
+  { include = "ubiquiti_monitor", from = "src" },
+]
+
+[tool.poetry.scripts]
+ubiquiti-monitor = "ubiquiti_monitor.cli:main"
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+python-kasa =  {version = "0.4.0.dev1", allow-prereleases = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-cov = "^2.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
