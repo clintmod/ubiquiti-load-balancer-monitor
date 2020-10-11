@@ -11,7 +11,7 @@ from ubiquiti_monitor.power_strips import find_plug, reboot_plug
 
 LOG = logging.getLogger(__name__)
 
-TWO_MINS = timedelta(minutes=2)
+TWO_MINS = timedelta(minutes=3)
 
 SHOULD_BREAK_LOOP = False
 
