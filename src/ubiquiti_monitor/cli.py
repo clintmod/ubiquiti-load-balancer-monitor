@@ -59,7 +59,10 @@ def reboot_modem_plug(interface):
 
 def should_reboot(plug):
     current_time = datetime.now()
-    return current_time - TWO_MINS > plug.on_since
+    if plug.on_since is not None:
+        return current_time - TWO_MINS > plug.on_since
+    else:
+        return True
 
 
 if __name__ == '__main__':
