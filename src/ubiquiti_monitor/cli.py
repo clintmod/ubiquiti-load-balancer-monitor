@@ -40,7 +40,7 @@ def monitor():
             LOG.info(interface.raw_report)
             if interface.is_down():
                 reboot_modem_plug(interface)
-            sleep(5)
+        sleep(5)
         if SHOULD_BREAK_LOOP:
             break
 
