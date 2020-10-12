@@ -36,7 +36,11 @@ def get_interface_reports():
 def create_watchdog_file():
     if not os.path.exists('workdir'):
         os.mkdir('workdir')
-    execute_shell("sshpass -e ssh -q clint@192.168.10.1 /opt/vyatta/bin/vyatta-op-cmd-wrapper show load-balance watchdog > workdir/watchdog.txt")
+    command = "mkdir -p ~/.ssh && \
+ssh-keyscan -H 192.168.10.1 >> ~/.ssh/known_hosts && \
+sshpass -e ssh -q clint@192.168.10.1 /opt/vyatta/bin/vyatta-op-cmd-wrapper \
+show load-balance watchdog > workdir/watchdog.txt"
+    execute_shell(command)
 
 
 def get_watchdog_contents_as_array():

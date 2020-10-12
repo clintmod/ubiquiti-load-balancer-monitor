@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import logging
+import signal
 import sys
 
 from datetime import datetime, timedelta
@@ -24,7 +25,18 @@ def main():
 
 def init():
     init_logging()
+    init_signals()
     monitor()
+
+
+def init_signals():
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
+
+def signal_handler(signalNumber, frame):
+    LOG.info("Exiting because of singal num: %i", signalNumber)
+    sys.exit(0)
 
 
 def init_logging():

@@ -8,6 +8,8 @@ import ubiquiti_monitor.models as sut
 
 @patch('ubiquiti_monitor.models.execute_shell')
 def test_get_interface_reports(exec_mock):
+    if not os.path.exists('workdir'):
+        os.mkdir('workdir')
     src = "tests/unit/files/watchdog.txt"
     dest = "workdir/watchdog.txt"
     copyfile(src, dest)

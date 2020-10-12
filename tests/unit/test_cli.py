@@ -23,6 +23,8 @@ def test_should_reboot_returns_true_when_not_already_rebooted():
 @patch("ubiquiti_monitor.cli.reboot_plug")
 @patch("ubiquiti_monitor.models.execute_shell")
 def test_main(exec_mock, reboot_mock, find_mock, sleep_mock):
+    if not os.path.exists('workdir'):
+        os.mkdir('workdir')
     src = "tests/unit/files/watchdog-down.txt"
     dest = "workdir/watchdog.txt"
     copyfile(src, dest)

@@ -1,13 +1,13 @@
 # ubiquiti-load-balancer-monitor
 
-A program to monitor a multi wan setup for my ubiquiti er-x router.
+A program to monitor a multi wan setup for my Ubiquiti er-x router.
 
 
 ## Motivation
 
-I'm load balancing 4 LTE modems and they are kind of flakey. 
+I'm load balancing 4 LTE modems and they are kind of flaky. 
 
-I run the modems on a two kasa smart power strips.
+I run the modems on a two Kasa smart power strips.
 
 So I: 
 - pull the report from the Ubiquiti er-x router
@@ -17,14 +17,12 @@ So I:
 
 ## Requirements
 
-- python 3
-- sshpass
-- poetry
+- docker
 
-## Setup
+## Building the image
 
 ```
-make setup
+make build
 ```
 
 ## Running the program
