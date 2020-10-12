@@ -1,0 +1,14 @@
+---
+
+version: "3.7"
+services:
+
+  ubiquiti-monitor:
+    image: clintmod/ubiquiti-monitor:latest
+    environment:
+      - SSHPASS=$SSHPASS
+    deploy:
+      restart_policy:
+          condition: on-failure
+          delay: 5s
+          max_attempts: 5

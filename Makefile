@@ -1,8 +1,17 @@
 export
 
+SHELL = /usr/bin/env bash
+
+DEPLOY_ENV ?= local
+
+local_DOCKER_HOST ?= unix:///var/run/docker.sock
+farm_DOCKER_HOST ?= ssh://raspberrypi.farm
+DOCKER_HOST ?= $($(DEPLOY_ENV)_DOCKER_HOST)
 
 build:
-	docker build -t clintmod/ubiquiti-monitor:latest .
+	docker buildx build \
+	--platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
+	--push -t clintmod/ubiquiti-monitor:latest .
 
 
 check-env:
@@ -26,3 +35,13 @@ test:
 
 push:
 	docker push clintmod/ubiquiti-monitor:latest
+
+
+deploy:
+	docker stack deploy --resolve-image=never \
+		-c stacks/$$DEPLOY_ENV/docker-compose.yml \
+		ubiquiti-monitor
+
+
+undeploy:
+	docker stack rm ubiquiti-monitor
