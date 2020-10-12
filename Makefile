@@ -9,9 +9,7 @@ farm_DOCKER_HOST ?= ssh://raspberrypi.farm
 DOCKER_HOST ?= $($(DEPLOY_ENV)_DOCKER_HOST)
 
 build:
-	docker buildx build \
-	--platform linux/arm/v7,linux/arm64/v8,linux/amd64 \
-	--push -t clintmod/ubiquiti-monitor:latest .
+	docker build -t clintmod/ubiquiti-monitor:latest .
 
 
 check-env:
