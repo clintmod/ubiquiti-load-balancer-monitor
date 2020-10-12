@@ -15,7 +15,7 @@ def test_should_reboot_works():
 
 def test_should_reboot_returns_true_when_not_already_rebooted():
     plug = MagicMock()
-    plug.on_since = datetime.now() - timedelta(seconds=121)
+    plug.on_since = datetime.now() - timedelta(seconds=181)
     assert sut.should_reboot(plug)
 
 @patch("ubiquiti_monitor.cli.sleep")
@@ -27,7 +27,7 @@ def test_main(exec_mock, reboot_mock, find_mock, sleep_mock):
     dest = "workdir/watchdog.txt"
     copyfile(src, dest)
     plug = MagicMock()
-    plug.on_since = datetime.now() - timedelta(seconds=121)
+    plug.on_since = datetime.now() - timedelta(seconds=181)
     find_mock.return_value = plug
     sut.SHOULD_BREAK_LOOP = True
     sut.main()
