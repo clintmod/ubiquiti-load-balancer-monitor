@@ -18,6 +18,7 @@ So I:
 ## Requirements
 
 - python 3
+- sshpass
 - poetry
 
 ## Setup
