@@ -8,18 +8,21 @@ LOG = logging.getLogger(__name__)
 class InterfaceReport:
     def __init__(self, report):
         self.raw_report = report
-        self.name = report["name"]
-        self.pings = report["pings"]
-        self.fails = report["fails"]
-        self.run_fails = report["run fails"]
-        self.route_drops = report["route drops"]
-        self.ping_gateway = report["ping gateway"]
-        self.last_route_drop = report["last route drop"]
-        self.last_route_recover = report["last route recover"]
+        self.name = report.get("name")
+        self.pings = report.get("pings")
+        self.fails = report.get("fails")
+        self.run_fails = report.get("run fails")
+        self.route_drops = report.get("route drops")
+        self.ping_gateway = report.get("ping gateway")
+        self.last_route_drop = report.get("last route drop")
+        self.last_route_recover = report.get("last route recover")
 
 
     def is_down(self):
-        return "DOWN" in self.ping_gateway
+        if self.ping_gateway is not None and "DOWN" in self.ping_gateway:
+            return True
+        else:
+            return False
 
 
 def get_interface_reports():
