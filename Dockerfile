@@ -1,7 +1,9 @@
 FROM python:alpine as base
 
-RUN apk add --update --no-cache --purge curl openssh-client sshpass \
+RUN apk add --update --no-cache --purge bash curl openssh-client sshpass \
   && rm -rf /var/cache/apk/* /tmp/*
+
+RUN sed -i 's#/root:/bin/ash#/root:/bin/bash#g' /etc/passwd
 
 WORKDIR /opt/ubiquiti-monitor
 
@@ -9,8 +11,7 @@ ENV APP_HOME=/opt/ubiquiti-monitor
 
 FROM base as compile
 
-RUN curl -sSL \
-  https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 ENV PATH="/root/.poetry/bin:${PATH}"
 
