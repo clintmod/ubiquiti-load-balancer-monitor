@@ -1,6 +1,7 @@
 import asyncio
 import logging
 
+
 from time import sleep
 from kasa import SmartStrip
 

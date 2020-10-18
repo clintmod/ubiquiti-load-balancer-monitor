@@ -24,7 +24,10 @@ run: check-env
 
 
 test:
-	docker run --rm -it -v $$PWD:/app clintmod/ubiquiti-monitor:latest \
+	docker run --rm -it \
+	-v $$PWD:/opt/ubiquiti-monitor \
+	-v /opt/ubiquiti-monitor/.venv \
+	clintmod/ubiquiti-monitor:latest \
 	pytest \
 	--cov=ubiquiti_monitor \
 	--cov-branch \

@@ -5,6 +5,7 @@ from ubiquiti_monitor.utils import execute_shell
 
 LOG = logging.getLogger(__name__)
 
+
 class InterfaceReport:
     def __init__(self, report):
         self.raw_report = report
@@ -13,13 +14,12 @@ class InterfaceReport:
         self.fails = report.get("fails")
         self.run_fails = report.get("run fails")
         self.route_drops = report.get("route drops")
-        self.ping_gateway = report.get("ping gateway")
+        self.test_script = report.get("test script")
         self.last_route_drop = report.get("last route drop")
         self.last_route_recover = report.get("last route recover")
 
-
     def is_down(self):
-        if self.ping_gateway is not None and "DOWN" in self.ping_gateway:
+        if self.test_script is not None and "FAIL" in self.test_script:
             return True
         else:
             return False
@@ -48,7 +48,8 @@ show load-balance watchdog > workdir/watchdog.txt"
 
 def get_watchdog_contents_as_array():
     with open('workdir/watchdog.txt') as file:
-        return file.readlines()[1:-2] # throw away the first line and the last 3 lines
+        # throw away the first line and the last 3 lines
+        return file.readlines()[1:-2]
 
 
 def parse_contents(contents):

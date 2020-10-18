@@ -29,7 +29,8 @@ def test_execute_shell_handles_errors(run_mock):
 
 
 # pylint: disable=unused-argument,too-many-arguments
-def run_error_func(command, shell, cwd, stderr, check, stdout, universal_newlines):
+def run_error_func(command, shell, cwd, stderr, check, stdout,
+                   universal_newlines):
     raise CalledProcessError(0, command)
 
 

@@ -1,6 +1,6 @@
 FROM python:alpine as base
 
-RUN apk add --update --no-cache --purge bash curl openssh-client sshpass \
+RUN apk add --update --no-cache --purge bash busybox-extras curl expect openssh-client sshpass \
   && rm -rf /var/cache/apk/* /tmp/*
 
 RUN sed -i 's#/root:/bin/ash#/root:/bin/bash#g' /etc/passwd

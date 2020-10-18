@@ -1,45 +1,20 @@
 Group G
   eth0
   status: OK
-  pings: 32690
-  fails: 246
+  pings: 43166
+  fails: 91
   run fails: 0/3
-  route drops: 8
-  ping gateway: 1.1.1.1 - REACHABLE
-  last route drop   : Sat Oct 10 06:15:04 2020
-  last route recover: Sat Oct 10 06:17:15 2020
-
-
-  eth1
-  status: Waiting on recovery (4/6)
-  pings: 32494
-  fails: 9205
-  run fails: 3/3
-  route drops: 12
-  ping gateway: 1.1.1.1 - DOWN
-  last route drop   : Sat Oct 10 20:42:59 2020
-  last route recover: Sat Oct 10 20:35:47 2020
-
-
-  eth2
-  status: OK
-  pings: 32856
-  fails: 190
-  run fails: 0/3
-  route drops: 5
-  ping gateway: 1.1.1.1 - REACHABLE
-  last route drop   : Sat Oct 10 06:30:02 2020
-  last route recover: Sat Oct 10 06:32:09 2020
-
+  route drops: 2
+  test script : /etc/scripts/check-internet.sh - DOWN
+  last route drop   : Sun Oct 18 14:42:10 2020
+  last route recover: Sun Oct 18 14:43:12 2020
 
   eth3
   status: OK
-  pings: 33052
-  fails: 121
+  pings: 42900
+  fails: 124
   run fails: 0/3
   route drops: 3
-  ping gateway: 1.1.1.1 - REACHABLE
-  last route drop   : Sat Oct 10 06:00:12 2020
-  last route recover: Sat Oct 10 06:02:09 2020
-
-
+  test script : /etc/scripts/check-internet.sh - OK
+  last route drop   : Sun Oct 18 14:38:57 2020
+  last route recover: Sun Oct 18 14:39:52 2020
