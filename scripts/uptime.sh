@@ -2,7 +2,7 @@
 
 set -e
 
-mkdir workdir
+mkdir -p workdir
 
 ./scripts/uptime_via_telnet.sh $1 2>&1 > /dev/null
 
