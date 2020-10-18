@@ -38,6 +38,10 @@ push:
 	docker push clintmod/ubiquiti-monitor:latest
 
 
+logs:
+	docker service logs -f ubiquiti-monitor_ubiquiti-monitor
+
+
 deploy:
 	docker stack deploy --resolve-image=never \
 		-c stacks/$$DEPLOY_ENV/docker-compose.yml \
