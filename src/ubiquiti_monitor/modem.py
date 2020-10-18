@@ -19,6 +19,7 @@ NAME_IP_MAP = {
 def reboot(name):
     name = name.strip()
     if name in NAME_IP_MAP:
+        LOG.info("Rebooting interface %s via telnet", name)
         reboot_via_telnet(name)
     else:
         reboot_via_smart_plug(name)
@@ -51,6 +52,8 @@ def reboot_via_telnet(name):
 def should_reboot_via_telnet(name):
     command = f"scripts/uptime.sh {NAME_IP_MAP[name]}"
     uptime = float(execute_shell(command))
+    LOG.info("checking to see if uptime (%s) is greater than %s seconds",
+             uptime, get_max_time_in_seconds())
     return uptime > get_max_time_in_seconds()
 
 

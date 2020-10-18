@@ -51,7 +51,7 @@ def monitor():
         for interface in reports:
             LOG.info(interface.raw_report)
             if interface.is_down():
-                LOG.info("Interface %s is down... rebooting", interface.name)
+                LOG.info("Interface %s is down... attempting reboot", interface.name)
                 reboot(interface.name)
         sleep(5)
         if SHOULD_BREAK_LOOP:

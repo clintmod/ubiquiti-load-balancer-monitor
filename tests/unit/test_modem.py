@@ -65,7 +65,7 @@ def test_reboot_via_telnet(exec_mock):
 
 @patch("ubiquiti_monitor.modem.execute_shell")
 def test_should_reboot_via_telnet(exec_mock):
-    exec_mock.return_value = "181"
+    exec_mock.return_value = "181.25"
     result = sut.should_reboot_via_telnet("eth0")
     assert exec_mock.called
     assert result
