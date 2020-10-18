@@ -17,6 +17,7 @@ NAME_IP_MAP = {
 
 
 def reboot(name):
+    name = name.strip()
     if name in NAME_IP_MAP:
         reboot_via_telnet(name)
     else:

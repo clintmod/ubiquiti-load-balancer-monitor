@@ -6,8 +6,14 @@ import ubiquiti_monitor.modem as sut
 
 
 @patch("ubiquiti_monitor.modem.reboot_via_smart_plug")
-def test_reboot(reboot_mock):
+def test_reboot_works(reboot_mock):
     sut.reboot("asdf")
+    assert reboot_mock.was_called
+
+
+@patch("ubiquiti_monitor.modem.reboot_via_telnet")
+def test_reboot_works_with_telnet(reboot_mock):
+    sut.reboot("eth0")
     assert reboot_mock.was_called
 
 
