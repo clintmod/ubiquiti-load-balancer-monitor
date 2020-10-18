@@ -14,7 +14,7 @@ def test_get_interface_reports(exec_mock):
     dest = "workdir/watchdog.txt"
     copyfile(src, dest)
     sut.get_interface_reports()
-    assert exec_mock.was_called
+    assert exec_mock.called
     os.remove(dest)
 
 
@@ -23,5 +23,5 @@ def test_create_watchdog_file(exec_mock):
     if os.path.exists('workdir'):
         os.rmdir('workdir')
     sut.create_watchdog_file()
-    assert exec_mock.was_called
+    assert exec_mock.called
     assert os.path.exists('workdir')

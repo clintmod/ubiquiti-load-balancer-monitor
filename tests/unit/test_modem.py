@@ -8,13 +8,13 @@ import ubiquiti_monitor.modem as sut
 @patch("ubiquiti_monitor.modem.reboot_via_smart_plug")
 def test_reboot_works(reboot_mock):
     sut.reboot("asdf")
-    assert reboot_mock.was_called
+    assert reboot_mock.called
 
 
 @patch("ubiquiti_monitor.modem.reboot_via_telnet")
 def test_reboot_works_with_telnet(reboot_mock):
     sut.reboot("eth0")
-    assert reboot_mock.was_called
+    assert reboot_mock.called
 
 
 @patch("ubiquiti_monitor.modem.reboot_plug")
@@ -24,8 +24,8 @@ def test_reboot_via_smart_plug_works(find_mock, reboot_mock):
     plug.on_since = datetime.now() - timedelta(seconds=181)
     find_mock.return_value = plug
     sut.reboot_via_smart_plug("asdf")
-    assert find_mock.was_called_with("asdf")
-    assert reboot_mock.was_called
+    find_mock.assert_called_with("asdf")
+    assert reboot_mock.called
 
 
 @patch("sys.exit")
@@ -33,8 +33,8 @@ def test_reboot_via_smart_plug_works(find_mock, reboot_mock):
 def test_reboot_via_smart_plug_works_when_plug_not_found(find_mock, exit_mock):
     find_mock.return_value = None
     sut.reboot_via_smart_plug("asdf")
-    assert find_mock.was_called_with("asdf")
-    assert exit_mock.was_called
+    find_mock.assert_called_with("asdf")
+    assert exit_mock.called
 
 
 def test_should_reboot_plug_works():
@@ -58,8 +58,8 @@ def test_should_reboot_plug_handles_works_when_on_since_is_None():
 @patch("ubiquiti_monitor.modem.execute_shell")
 def test_reboot_via_telnet(exec_mock):
     sut.reboot_via_telnet("eth0")
-    assert exec_mock.was_called_with(
-        f"scripts/reboot_via_telnet.sh 192.168.102.1"
+    exec_mock.assert_called_with(
+        f"scripts/uptime.sh 192.168.102.1"
     )
 
 
@@ -67,7 +67,7 @@ def test_reboot_via_telnet(exec_mock):
 def test_should_reboot_via_telnet(exec_mock):
     exec_mock.return_value = "181"
     result = sut.should_reboot_via_telnet("eth0")
-    assert exec_mock.was_called
+    assert exec_mock.called
     assert result
 
 

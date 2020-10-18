@@ -7,10 +7,10 @@ import ubiquiti_monitor.power_strips as sut
 def test_reboot_plug(mock_run, mock_sleep):
     plug = MagicMock()
     sut.reboot_plug(plug)
-    assert mock_run.was_called
-    assert mock_sleep.was_called_with(3)
-    assert plug.turn_off.was_called
-    assert plug.turn_on.was_called
+    assert mock_run.called
+    mock_sleep.assert_called_with(3)
+    assert plug.turn_off.called
+    assert plug.turn_on.called
 
 
 @patch("asyncio.run")
@@ -23,5 +23,5 @@ def test_find_plug(mock_run):
     strips = [mock_strip_1, mock_strip_2]
     sut.STRIPS = strips
     found_plug = sut.find_plug("asdf")
-    assert mock_run.was_called
+    assert mock_run.called
     assert found_plug == mock_plug

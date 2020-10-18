@@ -5,7 +5,7 @@ Group G
   fails: 91
   run fails: 0/3
   route drops: 2
-  test script : /etc/scripts/check-internet.sh - DOWN
+  test script : /etc/scripts/check-internet.sh - FAILED
   last route drop   : Sun Oct 18 14:42:10 2020
   last route recover: Sun Oct 18 14:43:12 2020
 

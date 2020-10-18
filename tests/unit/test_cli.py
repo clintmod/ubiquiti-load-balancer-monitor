@@ -17,9 +17,9 @@ def test_main(exec_mock, reboot_mock, sleep_mock):
     copyfile(src, dest)
     sut.SHOULD_BREAK_LOOP = True
     sut.main()
-    assert exec_mock.was_called
-    assert reboot_mock.was_called
-    assert sleep_mock.was_called_with(5)
+    assert exec_mock.called
+    reboot_mock.assert_called_with("eth0")
+    sleep_mock.assert_called_with(5)
     os.remove(dest)
 
 
@@ -27,16 +27,16 @@ def test_main(exec_mock, reboot_mock, sleep_mock):
 def test_main_handles_KeyboardInterrupt(init_mock):
     init_mock.side_effect = KeyboardInterrupt()
     sut.main()
-    assert init_mock.was_called
+    assert init_mock.called
 
 
 @patch("sys.exit")
 def test_signal_handler(exit_mock):
     sut.signal_handler(0, None)
-    assert exit_mock.was_called
+    assert exit_mock.called
 
 
 @patch("ubiquiti_monitor.cli.main")
 def test_module_init(main_mock):
     sut.module_init("__main__")
-    assert main_mock.was_called
+    assert main_mock.called
